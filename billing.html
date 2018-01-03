@@ -1,0 +1,166 @@
+<html>
+	<body>
+		<header>
+		<title>Billing</title>   
+		<!--googlefont, materializecss-->   
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+		
+		<!--jquery, materializejs-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+		
+		<meta charset="utf-8"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<meta name="description" content=""> 
+		<meta name="author" content=""> 
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+		
+		<style type="text/css">
+			#barsAmount {
+				width: 500px;
+			}
+			#idValue {
+				width: 500px;
+			}
+			#brand-logo {
+				margin-left: 15px;
+			}
+			@media only screen and (max-width: 768px) {
+			/*mobile phones*/
+				#brand-logo {
+					margin-left: 0px;
+				}
+			}
+		</style>
+		
+		<nav>
+			<div class="nav-wrapper" style="background-color: #424242;">
+			  <a href="#" id="brand-logo" class="brand-logo">Synced Billing</a>
+			</div>
+		</nav>
+		</header>
+		
+		<main>
+			<form id="paypalForm" method="POST" action="https://www.paypal.com/cgi-bin/webscr">
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="upload" value="1">
+				<input type="hidden" name="business" value="gamewolf10@gmail.com">
+			  <div class="row">
+				<div class="input-field col s12 m12 l12" style="margin-top: 25px">
+				  <i class="material-icons prefix">account_circle</i>
+				  <input required id="idValue" type="number" class="validate" onkeyup="setSyncedId()">
+				  <label for="idValue">Synced ID: #people-(yourid)</label>
+				</div>
+				
+				<br>
+				
+				<div style="margin-left: 20px;">
+				  <input required name="group1" type="radio" id="barsselect" onclick="showBars()"/>
+				  <label for="barsselect">Bars</label>
+				  <input required name="group1" type="radio" id="subscriptionselect" onclick="showSubscription()"/>
+				  <label for="subscriptionselect">Synchronization</label>
+				</div>
+				
+				<br>
+				
+				<div id="subscriptionDiv" style="width: 500px; margin-left: 20px;" hidden>
+				  <label>Synchronization</label>
+				  <select onchange="calculateSubscriptionPrice()" id="subscriptionOption" class="browser-default">
+					<option value="1month">1 Month ($1.25)</option>
+					<option value="2months">2 Months ($2.50)</option>
+					<option value="3months">3 Months ($3.75)</option>
+					<option value="4months">4 Months ($5.00)</option>
+					<option value="5months">5 Months ($6.25)</option>
+					<option value="6months">6 Months ($7.50)</option>
+					<option value="7months">7 Months ($8.75)</option>
+					<option value="8months">8 Months ($10.00)</option>
+					<option value="9months">9 Months ($11.25)</option>
+					<option value="10months">10 Months ($12.50)</option>
+					<option value="11months">11 Months ($13.75)</option>
+					<option value="12months">12 Months ($15.00)</option>
+				  </select>
+				</div>
+				
+				<div id="barsDiv" class="input-field col s12 m12 l12" hidden>
+					<i class="material-icons prefix">local_atm</i>
+					<input required id="barsAmount" type="number" class="validate" onkeyup="calculateBarsPrice()">
+					<label for="barsAmount">Bars Amount</label>
+				</div>
+								
+				<div class="input-field col s12 m12 l12">
+					<h5 style="color: green;" id="totalAmount">Total: $0 USD</h5>
+				</div>
+				
+				<div class="input-field col s12 m12 l12">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Check Out
+					<i class="material-icons right">send</i>
+				</button>
+				</div>
+			</form>
+		</main>
+		
+		<footer>
+		
+		</footer>
+	</body>
+	
+	<script>
+		//initialize paypal elements
+		document.getElementById("paypalForm").innerHTML += '<input id="item_name_1" form="paypalForm" type="hidden" name="item_name_' + (1) + '" value="' + ("1_months") + '">';
+		document.getElementById("paypalForm").innerHTML += '<input id="amount_1" form="paypalForm" type="hidden" name="amount_' + (1) + '" value="' + 0.09 + '">';
+		
+		var syncedId = "0";
+		//set synced id from input text box
+		function setSyncedId() {
+			syncedId = document.getElementById("idValue").value;
+			
+			//check if the bars or subscription div is open 
+			if(!(document.getElementById("barsDiv").hasAttribute("hidden"))) {
+				calculateBarsPrice();
+			} else if(!(document.getElementById("subscriptionDiv").hasAttribute("hidden"))) {
+				calculateSubscriptionPrice();
+			}
+		}
+		//show the bars input text box
+		function showBars() {
+			document.getElementById("barsDiv").setAttribute("hidden", "");
+			document.getElementById("barsAmount").setAttribute("required", "");
+			document.getElementById("subscriptionDiv").setAttribute("hidden", "");
+			document.getElementById("barsDiv").removeAttribute("hidden", "");
+			calculateBarsPrice();
+		}
+		//show the subscription option box
+		function showSubscription() {
+			document.getElementById("barsDiv").setAttribute("hidden", "");
+			document.getElementById("barsAmount").removeAttribute("required", "");
+			document.getElementById("subscriptionDiv").setAttribute("hidden", "");
+			document.getElementById("subscriptionDiv").removeAttribute("hidden", "");
+			document.getElementById("subscriptionOption").selectedIndex  = "0";
+			calculateSubscriptionPrice();
+		}
+		//calculate the cost for the amount of bars inputted
+		function calculateBarsPrice() {
+			var barsAmount = document.getElementById("barsAmount");
+			var totalAmount = document.getElementById("totalAmount");
+			var price = ((barsAmount.value) * 0.09).toFixed(2); //only allow 2 decimals
+			totalAmount.innerHTML = "Total: $" + price + " USD";
+			
+			//paypal elements
+			document.getElementById("item_name_1").value = ((barsAmount.value) + "bars" + "_" + syncedId);
+			document.getElementById("amount_1").value = price;
+		}
+		//calculate the cost for the subscription for the selected option
+		function calculateSubscriptionPrice() {
+			var selected = document.getElementById("subscriptionOption").selectedIndex + 1;
+			var price = ((selected) * 1.25).toFixed(2); //only allow 2 decimals
+			totalAmount.innerHTML = "Total: $" + price + " USD";
+			
+			//paypal elements
+			document.getElementById("item_name_1").value = (selected + "month" + "_" + syncedId);
+			document.getElementById("amount_1").value = price;
+		}
+	</script>
+</html>
