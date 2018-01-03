@@ -7,15 +7,15 @@ be completed for the billing files. For this reason, I have provided step-by-ste
 documentation below to properly set-up the billing system.
 
 Documentation:
-1. Copy and paste the "billing.html" file into your Whirled's "pages" folder
-2. Copy and paste the "BillingSuccess.php" file into the "htdocs" folder of an Apache web-server
+1. Copy and paste the "billing.html" file into your Whirled's "pages" folder.
+2. Copy and paste the "BillingSuccess.php" file into the "htdocs" folder of an Apache web-server.
 3. Open the "BillingIPN.php" file and on line 71 replace the "http://www.syncedonline.com:82/BillingSuccess.php"
 with the URL for your "BillingSuccess.php" file from step 2.
-4. Now copy and paste the "BillingIPN.php" in a new Apache web-server that runs on port 80
+4. Now copy and paste the "BillingIPN.php" in a new Apache web-server that runs on port 80.
 5. Now we're going to set-up the PayPal IPN, so go to this link and click the "Update" button on the "Instant payment notifications" row:
 "https://www.paypal.com/uk/cgi-bin/webscr?cmd=_profile-display-handler&tab_id=SELLER_PREFERENCES"
-6. Set the "Notification URL" to the URL of your "BillingIPN.php" file
-7. Tick the "receive IPN messages (Enabled)" checkbox and press the "Save" button
+6. Set the "Notification URL" to the URL of your "BillingIPN.php" file.
+7. Tick the "receive IPN messages (Enabled)" checkbox and press the "Save" button.
 8. You are finished setting-up the PayPal IPN!
 
 -----------------------------------------------------------------------------------------------
