@@ -1,3 +1,5 @@
+CLIENT-SIDE DEMO (NO SERVER-SIDE IMPLEMENTATION): https://shadowsych.github.io/synced_billing/billing.html
+
 This is the billing system programmed by Pravat Bhusal (www.github.com/Shadowsych) 
 for Richard Fraser. This code may be given to anyone to study and use as his or her
 billing service for their Whirled server. However, proper set-up must
