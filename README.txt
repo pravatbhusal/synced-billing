@@ -16,7 +16,7 @@ with the URL for your "BillingSuccess.php" file from step 2.
 7. Tick the "receive IPN messages (Enabled)" checkbox and press the "Save" button
 8. You are finished setting-up the PayPal IPN!
 
--------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
 NOTE: Here are the different Apache web-servers you can install based on your operating system
 - Windows Apache Server: XAMPP
 - Mac Apache Server: MAMP
