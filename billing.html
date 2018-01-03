@@ -51,7 +51,7 @@
 			  <div class="row">
 				<div class="input-field col s12 m12 l12" style="margin-top: 25px">
 				  <i class="material-icons prefix">account_circle</i>
-				  <input required id="idValue" type="number" class="validate" onkeyup="setSyncedId()">
+				  <input required id="idValue" type="number" class="validate" onclick="setSyncedId()" onkeyup="setSyncedId()">
 				  <label for="idValue">Synced ID: #people-(yourid)</label>
 				</div>
 				
@@ -86,7 +86,7 @@
 				
 				<div id="barsDiv" class="input-field col s12 m12 l12" hidden>
 					<i class="material-icons prefix">local_atm</i>
-					<input required id="barsAmount" type="number" class="validate" onkeyup="calculateBarsPrice()">
+					<input required id="barsAmount" type="number" class="validate" onclick="calculateBarsPrice()" onkeyup="calculateBarsPrice()">
 					<label for="barsAmount">Bars Amount</label>
 				</div>
 								
