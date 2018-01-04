@@ -41,7 +41,6 @@ EOF;
    $sql =<<<EOF
       INSERT INTO "BarscriptionRecord" ("memberId",expires) VALUES ($playerid, '$subscribe_time');
       UPDATE "MemberRecord" set flags = 4096 where "memberId"=$playerid;
-	  UPDATE "MemberAccountRecord" set bars = bars + 10 where "memberId"=$playerid;
 EOF;
 }
 				
