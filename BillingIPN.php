@@ -14,7 +14,7 @@ foreach ($_POST as $parm => $var)
 	
 // Extract the data PayPal IPN has sent us, into local variables 
 
-$item_name = $_POST['item_name_1'];
+$item_name = $_POST['item_name1'];
 $payment_status = $_POST['payment_status'];
 
 $purchase = explode("_", $item_name, 2);
