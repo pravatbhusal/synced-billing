@@ -9,7 +9,7 @@ documentation below to properly set-up the billing system.
 Documentation:
 1. Copy and paste the "billing.html" file into your Whirled's "pages" folder.
 2. Copy and paste the "BillingSuccess.php" file into the "htdocs" folder of an Apache web-server.
-3. Open the "BillingIPN.php" file and on line 71 replace the "http://www.syncedonline.com:82/BillingSuccess.php"
+3. Open the "BillingIPN.php" file and on line 57 replace the "http://www.syncedonline.com:8080/BillingSuccess.php"
 with the URL for your "BillingSuccess.php" file from step 2.
 4. Now copy and paste the "BillingIPN.php" in a new Apache web-server that runs on port 80.
 5. Now we're going to set-up the PayPal IPN, so go to this link and click the "Update" button on the "Instant payment notifications" row:
