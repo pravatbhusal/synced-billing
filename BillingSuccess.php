@@ -16,16 +16,16 @@ if(!$db){
   echo "Opened database successfully.\n";
 }
 
-$item = mysql_real_escape_string(stripslashes($_POST['item']));
-$playerid = mysql_real_escape_string(stripslashes($_POST['playerid']));
+$item = $_POST['item'];
+$playerid = $_POST['playerid'];
 $barAmount = "";
 $monthAmount = "";
 
 //check if the purchase was either bars or for subscription months, then set the values
 if (strpos($item, "bars") !== false) {
-	$barAmount = chop($barAmount, "bars");
+	$barAmount = chop($item, "bars");
 } else if (strpos($item, "month") !== false) {
-	$monthAmount = chop($monthAmount, "month");
+	$monthAmount = chop($item, "month");
 	$monthAmount = "+" . $monthAmount . " month";
 }	
 		
