@@ -24,10 +24,8 @@ NOTE: Here are the different Apache web-servers you can install based on your op
 - Mac Apache Server: MAMP
 - Linux Apache Server: LAMP
 
-NOTE: If you're using a Linux server and PostgreSQL, make sure to install the PHP and PostgreSQL driver:
-```
-sudo apt-get install php5-pgsql
-```
+NOTE: If you're using a Linux server and PostgreSQL, make sure to install the PHP and PostgreSQL driver: sudo apt-get install php5-pgsql
+
 
 NOTE: You need a PayPal Premier or PayPal Business account for the IPN system to work.
 
