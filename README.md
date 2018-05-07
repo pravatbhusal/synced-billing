@@ -19,7 +19,7 @@ with the URL for your "BillingSuccess.php" file from step 2.
 8. Tick the "receive IPN messages (Enabled)" checkbox and press the "Save" button.  
 9. Now we're going to set-up a cron job to update the subscribers' subscription status. This cron job will execute every hour. So open a new Linux Terminal and type "crontab -e" and in the bottom of the file type this cron job:  
 ```0 * * * * /usr/bin/php [PATH_TO_YOUR_UPDATESUBSCRIBERS.PHP_FILE]```   
-and replace the [PATH_TO_YOUR_BILLINGSUCCESS.PHP_FILE] to your UpdateSubscribers.php file  
+and replace the [PATH_TO_YOUR_UPDATESUBSCRIBERS.PHP_FILE] to your UpdateSubscribers.php file's path  
 10. Press Ctrl + X and save the cron job file
 11. You are finished setting-up the PayPal IPN!  
 -----------------------------------------------------------------------------------------------
