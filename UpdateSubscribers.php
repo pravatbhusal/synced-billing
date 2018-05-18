@@ -1,9 +1,9 @@
 <?php
 // Connection Variables
-$host        = "host=localhost";
-$port        = "port=5432";
-$dbname      = "dbname=msoy";
-$credentials = "user=postgres password=zFEdPQS6DD";
+$host        = "host=HOST_HERE";
+$port        = "port=PORT_HERE";
+$dbname      = "dbname=DBNAME_HERE";
+$credentials = "user=USER_HERE password=PASSWORD_HERE";
 $current_time = strtotime("now");
 
 // Open database
